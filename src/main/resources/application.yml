@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: msvc-customer
+  datasource:
+    url: "jdbc:h2:mem:msvc_customer;DB_CLOSE_DELAY=-1"
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+
+springdoc:
+  api-docs:
+    enabled: ${SPRINGDOC_ENABLED:true}
+  swagger-ui:
+    enabled: ${SPRINGDOC_ENABLED:true}
+    operations-sorter: alpha
+    tags-sorter: alpha
+    disable-swagger-default-url: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: never
